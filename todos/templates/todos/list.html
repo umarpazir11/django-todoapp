@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo List</title>
+    <style>
+        body { font-family: sans-serif; max-width: 480px; margin: 40px auto; }
+        li { display: flex; align-items: center; gap: 8px; margin: 6px 0; }
+        .completed { text-decoration: line-through; color: #888; }
+        form.inline { display: inline; }
+    </style>
+</head>
+<body>
+    <h1>My Todos</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="title" placeholder="What needs doing?" required>
+        <button type="submit">Add</button>
+    </form>
+
+    <ul>
+        {% for todo in todos %}
+            <li>
+                <form class="inline" method="post" action="{% url 'todo_toggle' todo.id %}">
+                    {% csrf_token %}
+                    <input type="checkbox" onchange="this.form.submit()" {% if todo.completed %}checked{% endif %}>
+                </form>
+                <span class="{% if todo.completed %}completed{% endif %}">{{ todo.title }}</span>
+                <form class="inline" method="post" action="{% url 'todo_delete' todo.id %}">
+                    {% csrf_token %}
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        {% empty %}
+            <li>Nothing here yet — add your first todo above.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
