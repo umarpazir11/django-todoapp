@@ -1,5 +1,7 @@
 # Django Todo App
 
+![Python](https://img.shields.io/badge/Python-3.13-3776AB?logo=python&logoColor=white) ![Django](https://img.shields.io/badge/Django-6.0.6-092E20?logo=django&logoColor=white) ![SQLite](https://img.shields.io/badge/Database-SQLite-07405E?logo=sqlite&logoColor=white) ![Status](https://img.shields.io/badge/Status-Learning%20Project-blue)
+
 A simple Todo list application built with Django. This is a personal learning
 project I built to understand Django's core building blocks — the
 Model-View-Template (MVT) architecture, the ORM, URL routing, and the
